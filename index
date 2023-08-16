@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jogo de Vitória ou Derrota</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        #buttons {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jogo de Vitória ou Derrota</h1>
+    <p>Pressione um botão e veja o resultado!</p>
+    <div id="buttons">
+        <button id="button1" onclick="verificarResultado(this)">Botão 1</button>
+        <button id="button2" onclick="verificarResultado(this)">Botão 2</button>
+        <button id="button3" onclick="verificarResultado(this)">Botão 3</button>
+    </div>
+    <h2 id="resultado"></h2>
+    <audio id="audio" src="vitoria.mp3"></audio> <!-- Substitua "vitoria.mp3" pelo caminho do seu arquivo de som -->
+
+    <script>
+        function verificarResultado(botaoClicado) {
+            var numAleatorio = Math.floor(Math.random() * 3) + 1; // Gera um número aleatório entre 1 e 3
+            var numBotaoClicado = parseInt(botaoClicado.id.replace('button', ''));
+
+            if (numAleatorio === numBotaoClicado) {
+                document.getElementById("resultado").innerText = "Vitória!";
+                document.getElementById("audio").play(); // Toca o som de vitória
+            } else {
+                document.getElementById("resultado").innerText = "Derrota!";
+            }
+        }
+    </script>
+</body>
+</html>
